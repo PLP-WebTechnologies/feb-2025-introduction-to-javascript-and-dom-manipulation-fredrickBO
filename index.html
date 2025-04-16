@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>week 5 assignment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #boxToStyle {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Interactivity Demo</h1>
+
+    <!-- Section 1: Change Text Content -->
+    <section>
+        <h2>1. Change Text Content</h2>
+        <p id="textToChange">This is the original text.</p>
+        <button id="changeTextBtn">Click here</button>
+    </section>
+
+    <hr>
+
+    <!-- Section 2: Modify CSS Styles -->
+    <section>
+        <h2>2. Modify CSS Styles</h2>
+        <div id="boxToStyle">Style Me!</div>
+        <button id="changeStyleBtn">Change Style</button>
+    </section>
+
+    <hr>
+
+    <!-- Section 3: Add/Remove Element -->
+    <section>
+        <h2>3. Add/Remove Element</h2>
+        <div id="elementContainer">
+            <!-- New elements will be added here -->
+        </div>
+        <button id="toggleElementBtn">Add Element</button>
+    </section>
+
+
+    <!-- Link to JavaScript file - IMPORTANT: Place at the end -->
+    <script>
+        // Function to change text content
+        const textToChange = document.getElementById('textToChange');
+        const changeTextBtn = document.getElementById('changeTextBtn');
+        changeTextBtn.addEventListener('click', () => {
+            textToChange.textContent = 'The text has been changed!';
+        });
+
+        // Function to modify CSS styles
+        const boxToStyle = document.getElementById('boxToStyle');
+        const changeStyleBtn = document.getElementById('changeStyleBtn');
+        changeStyleBtn.addEventListener('click', () => {
+            boxToStyle.style.backgroundColor = 'lightgreen';
+            boxToStyle.style.width = '200px';
+            boxToStyle.style.height = '200px';
+            boxToStyle.textContent = 'Styled!';
+        });
+
+        // Function to add/remove element
+        const elementContainer = document.getElementById('elementContainer');
+        const toggleElementBtn = document.getElementById('toggleElementBtn');
+        let elementAdded = false;
+        toggleElementBtn.addEventListener('click', () => {
+            if (elementAdded) {
+                const elementToRemove = document.getElementById('newElement');
+                elementContainer.removeChild(elementToRemove);
+                toggleElementBtn.textContent = 'hi there, thank you for adding text';
+            } else {
+                const newElement = document.createElement('div');
+                newElement.id = 'newElement';
+                newElement.textContent = 'New text added here!';
+                newElement.style.backgroundColor = 'lightcoral';
+                newElement.style.padding = '10px';
+                newElement.style.marginTop = '10px';
+                elementContainer.appendChild(newElement);
+                toggleElementBtn.textContent = 'Remove Element';
+            }
+            elementAdded = !elementAdded;
+        });
+    </script>
+</body>
+
+</html>
